@@ -1,21 +1,23 @@
 function findZombies(matrix) {
   this.matrix = matrix;
   this.disease = matrix[0][0];
-  this.col=0;
-  this.row=0;
+  this.mlength = this.matrix.length;
+  this.mwidth = this.matrix[0].length ;
 
   this.makeDiseaseMatrix = function(){
-    var newmatrix = [];
-    for(var i=0; i<this.matrix[0].length; i++) {
-      newmatrix[i] = new Array(this.matrix[0].length);
-        for(var j=0; j<this.matrix[0].length; j++) {
-            newmatrix[i][j] = 0;
+    var matrix = [];
+    for(var i=0; i<this.mlength; i++) {
+      matrix[i] = new Array(this.mwidth);
+        for(var j=0; j<this.mwidth; j++) {
+            matrix[i][j] = 0;
         }
-    }
-    return newmatrix;
+  }
+    return matrix;
   }
   
   this.traverse = function(col,row){
+  if ((col >= this.mlength) || (row >= this.mwidth)) return
+ // console.log(col,row);
   if (this.matrix[col][row] === this.disease) {this.diseaseMatrix[col][row] = 1;}
   if(this.matrix[col][row]!=-1){
     
@@ -52,4 +54,4 @@ var matrix = new findZombies([
     [7, 9, 7]
 ]); 
 
-//console.log(matrix.makeDiseaseMatrix());
+console.log(matrix.diseaseMatrix);
