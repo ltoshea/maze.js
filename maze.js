@@ -5,40 +5,36 @@ function findZombies(matrix) {
   this.row=0;
 
   this.makeDiseaseMatrix = function(){
-    var matrix = [];
-    for(var i=0; i<this.matrix.length; i++) {
-      matrix[i] = new Array(this.matrix.length);
-        for(var j=0; j<this.matrix.length; j++) {
-            matrix[i][j] = 0;
+    var newmatrix = [];
+    for(var i=0; i<this.matrix[0].length; i++) {
+      newmatrix[i] = new Array(this.matrix[0].length);
+        for(var j=0; j<this.matrix[0].length; j++) {
+            newmatrix[i][j] = 0;
         }
     }
-    return matrix;
+    return newmatrix;
   }
   
   this.traverse = function(col,row){
-  //Work in progress
-  if(this.matrix[col][row]!==-1){
+  if (this.matrix[col][row] === this.disease) {this.diseaseMatrix[col][row] = 1;}
+  if(this.matrix[col][row]!=-1){
     
-    if((col < this.matrix.length - 1) && (this.matrix[col][row] === this.disease)) {
-        this.diseaseMatrix[col][row] = 1;
+    if(col < this.matrix.length - 1) {
         this.matrix[col][row] = -1;
         this.traverse(col + 1, row);
     }
     //down
-    if((row < this.matrix[col].length - 1) && (this.matrix[col][row] === this.disease)) {
-        this.diseaseMatrix[col][row] = 1;
+    if(row < this.matrix[col].length - 1) {
         this.matrix[col][row] = -1;
         this.traverse(col, row + 1);
     }
     //left
-    if((col > 0) && (this.matrix[col][row] === this.disease)) {
-        this.diseaseMatrix[col][row] = 1;
+    if(col > 0){
         this.matrix[col][row] = -1;
         this.traverse(col - 1, row);
     }
     //up
-    if((row > 0) && (this.matrix[col][row] === this.disease)) {
-        this.diseaseMatrix[col][row] = 1;
+    if(row > 0){
         this.matrix[col][row] = -1;
         this.traverse(col, row - 1);
     }
@@ -56,4 +52,4 @@ var matrix = new findZombies([
     [7, 9, 7]
 ]); 
 
-console.log(matrix.diseaseMatrix);
+//console.log(matrix.makeDiseaseMatrix());
