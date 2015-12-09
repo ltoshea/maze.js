@@ -5,14 +5,14 @@ You are a number. But that's good for you since you live in the beautiful world,
 You'll be given two-dimensional array with numbers in it. For some mysterious reason patient zero is always found in north west area of the city (element [0][0] of the matrix) and the plague spreads from there to other cells by moving left, right, up or down. You must create a function that returns a map (2-dimensional array) with all the contaminated areas marked as 1 and virus-free marked as 0.
 
 In other words: find all the matrix elements with the same value as [0][0] that you can go to by moving only down, up, right or left from [0][0] - without going into a field storing any other value.
-
+```
 Examples
 var city1 = [
     [7, 2, 3],
     [7, 2, 3],
     [1, 2, 7]
 ];
-
+```
 var contaminatedInCity1 = [
     [1, 0, 0],
     [1, 0, 0],
